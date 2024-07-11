@@ -27,7 +27,7 @@ class MobileSettings extends React.Component<IProps> {
     return (
       <div className="MobileSettings">
         <header>
-          <h2>ffdraft.app</h2>
+          <h2>Gravy Platform</h2>
           <div className="pick-column">
             <p className="small">{headerMessage}</p>
             <div className="draft-dot">

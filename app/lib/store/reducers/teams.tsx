@@ -1,7 +1,7 @@
 import { toast } from 'react-toastify';
 import { IPlayer } from '../../models/Player';
 import { IPick, ITeam } from '../../models/Team';
-import { createTeam, IStoreState } from '../store';
+import {createTeam, createTeams, IStoreState} from '../store';
 import { initStore, updatePlayerVORs } from './players';
 
 /**
@@ -153,7 +153,7 @@ export const setNumberOfTeams = (state: IStoreState, numberOfTeams: number): ISt
   const { picks, rosterFormat, trackedTeam } = state;
 
   // create new teams with empty rosters
-  let newTeams = new Array(numberOfTeams).fill(0).map(() => createTeam(rosterFormat));
+  let newTeams = createTeams(rosterFormat, numberOfTeams);
 
   // given the new team count, update each pick and destination team
   const newPicks: IPick[] = [];

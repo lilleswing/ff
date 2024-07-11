@@ -8,9 +8,11 @@ import { resetDraft } from '../lib/store/actions/players';
 import { setScoreFormat, toggleScoringFormatting } from '../lib/store/actions/scoring';
 import { setNumberOfTeams, setTrackedTeam, toggleRosterFormatting } from '../lib/store/actions/teams';
 import { IStoreState } from '../lib/store/store';
+import {ITeam} from "../lib/models/Team";
 
 interface IProps {
   numberOfTeams: number;
+  teams: ITeam[];
   resetDraft: () => void;
   scoring: IScoring;
   setNumberOfTeams: (count: number) => void;
@@ -40,7 +42,7 @@ class Settings extends React.Component<IProps, IState> {
   };
 
   public render() {
-    const { numberOfTeams } = this.props;
+    const { numberOfTeams, teams } = this.props;
     const { open } = this.state;
 
     // an array with the allowable number of teams: [6, 16]
@@ -60,7 +62,7 @@ class Settings extends React.Component<IProps, IState> {
               Your team
               <Select className="Settings-Select" onChange={this.props.setTrackedTeam} value={this.props.trackedTeam}>
                 {new Array(numberOfTeams).fill(0).map((_, i) => (
-                  <Select.Option key={`Pick-Selection-${i}`} value={i}>{`Team ${i + 1}`}</Select.Option>
+                  <Select.Option key={`Pick-Selection-${i}`} value={i}>{`${teams[i].name}`}</Select.Option>
                 ))}
               </Select>
             </label>
@@ -77,19 +79,19 @@ class Settings extends React.Component<IProps, IState> {
               </Select>
             </label>
 
-            <label className="full-width">
-              PPR
-              <Radio.Group
-                value={this.props.scoring.receptions}
-                style={{ marginLeft: 'auto' }}
-                onChange={(e) => {
-                  this.props.setScoring({ ...this.props.scoring, receptions: e.target.value });
-                }}>
-                <Radio.Button value={0}>0</Radio.Button>
-                <Radio.Button value={0.5}>0.5</Radio.Button>
-                <Radio.Button value={1}>1</Radio.Button>
-              </Radio.Group>
-            </label>
+            {/*<label className="full-width">*/}
+            {/*  PPR*/}
+            {/*  <Radio.Group*/}
+            {/*    value={this.props.scoring.receptions}*/}
+            {/*    style={{ marginLeft: 'auto' }}*/}
+            {/*    onChange={(e) => {*/}
+            {/*      this.props.setScoring({ ...this.props.scoring, receptions: e.target.value });*/}
+            {/*    }}>*/}
+            {/*    <Radio.Button value={0}>0</Radio.Button>*/}
+            {/*    <Radio.Button value={0.5}>0.5</Radio.Button>*/}
+            {/*    <Radio.Button value={1}>1</Radio.Button>*/}
+            {/*  </Radio.Group>*/}
+            {/*</label>*/}
 
             <label>
               <Tooltip title="Change roster format">
@@ -145,10 +147,11 @@ class Settings extends React.Component<IProps, IState> {
   };
 }
 
-const mapStateToProps = ({ numberOfTeams, scoring, trackedTeam, undraftedPlayers }: IStoreState) => ({
+const mapStateToProps = ({ numberOfTeams, scoring, trackedTeam, teams, undraftedPlayers }: IStoreState) => ({
   numberOfTeams,
   scoring,
   trackedTeam,
+  teams,
   undraftedPlayers,
 });
 

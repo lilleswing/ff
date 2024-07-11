@@ -13,9 +13,9 @@ if (typeof window !== 'undefined') {
   window.onload = () => {
     // if the last sync was within 12 hours, don't re-sync players
     const { lastSync, lastSyncPlayers, players } = store.getState();
-    if (players.length && lastSyncPlayers.length && lastSync > 0 && Date.now() - lastSync < 1000 * 60 * 60 * 12) {
-      return;
-    }
+    // if (players.length && lastSyncPlayers.length && lastSync > 0 && Date.now() - lastSync < 1000 * 60 * 60 * 12) {
+    //   return;
+    // }
 
     // set the player list using setPlayers
     const xhttp = new XMLHttpRequest();
@@ -39,7 +39,8 @@ if (typeof window !== 'undefined') {
         console.warn(this.readyState, this.status, xhttp.responseText);
       }
     };
-    xhttp.open('GET', '/projections.json', true);
+    // xhttp.open('GET', '/misc/gravy/projections.json', true);
+    xhttp.open('GET', 'projections.json', true);
     xhttp.send();
   };
 }

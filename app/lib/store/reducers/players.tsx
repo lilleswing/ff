@@ -1,7 +1,7 @@
 import { DraftablePositions as positions, IPlayer } from '../../models/Player';
 import { IScoring } from '../../models/Scoring';
 import { IPick, IRoster, ITeam, NullablePlayer } from '../../models/Team';
-import { createTeam, IStoreState } from '../store';
+import {createTeam, createTeams, IStoreState} from '../store';
 import { setActiveTeam, setNumberOfTeams } from './teams';
 
 interface IPlayerForecast extends IPlayer {
@@ -20,7 +20,7 @@ export const initStore = (state: IStoreState, players: IPlayer[]) =>
     lastSyncPlayers: players,
     players: players,
     picks: [],
-    teams: new Array(state.numberOfTeams).fill(0).map(() => createTeam(state.rosterFormat)),
+    teams: createTeams(state.rosterFormat, state.numberOfTeams),
     undraftedPlayers: players,
   });
 
@@ -156,6 +156,7 @@ export const updatePlayerVORs = (state: IStoreState): IStoreState => {
 
     if (pos === 'QB') {
       starters += rosterFormat['SUPERFLEX'];
+      starters += 3;
     }
     if (['RB', 'WR'].includes(pos)) {
       starters += 1; // I have no great excuse for this
