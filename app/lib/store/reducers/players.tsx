@@ -39,18 +39,31 @@ export const removePlayer = (state: IStoreState, player: IPlayer): IStoreState =
  * given a player and a team's roster, remove the player from the roster
  */
 const removeFromRoster = (roster: ITeam, player: IPlayer): ITeam => {
-  // @ts-ignore
-  return Object.keys(roster).reduce(
-    (acc: ITeam, pos) => ({
-      ...acc,
-      // @ts-ignore
-      [pos]: roster[pos].reduce(
-        (players: NullablePlayer[], p: NullablePlayer) => (p === player ? [...players, null] : [...players, p]),
-        []
-      ),
-    }),
-    {}
+  const positions = Object.keys(roster).filter(key => key !== 'name');
+  return positions.reduce(
+      (acc: ITeam, pos) => ({
+        ...acc,
+        // @ts-ignore
+        [pos]: roster[pos].reduce(
+            (players: NullablePlayer[], p: NullablePlayer) => (p === player ? [...players, null] : [...players, p]),
+            []
+        ),
+      }),
+      { ...roster, name: roster.name }
   ) as ITeam;
+  //
+  // // @ts-ignore
+  // return Object.keys(roster).reduce(
+  //   (acc: ITeam, pos) => ({
+  //     ...acc,
+  //     // @ts-ignore
+  //     [pos]: roster[pos].reduce(
+  //       (players: NullablePlayer[], p: NullablePlayer) => (p === player ? [...players, null] : [...players, p]),
+  //       []
+  //     ),
+  //   }),
+  //   {}
+  // ) as ITeam;
 };
 
 /**
