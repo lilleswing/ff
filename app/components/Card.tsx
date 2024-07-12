@@ -59,8 +59,6 @@ class Card extends React.Component<ICardProps> {
       .filter((c) => c)
       .join(' ');
 
-    const shortTeamNames = teams.map((x) => x.name.slice(0,10))
-
     return (
       <div key={pick.pickNumber} className={cardClass} style={{ width: length, height: length }}>
         {playerCard ? (
