@@ -1,7 +1,7 @@
 import { toast } from 'react-toastify';
 import { IPlayer } from '../../models/Player';
 import { IPick, ITeam } from '../../models/Team';
-import {createTeam, createTeams, IStoreState} from '../store';
+import {createTeams, IStoreState} from '../store';
 import { initStore, updatePlayerVORs } from './players';
 
 /**

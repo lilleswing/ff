@@ -102,7 +102,7 @@ export interface IStoreState {
     undraftedPlayers: IPlayer[];
 }
 
-export const createTeams = (rosterFormat: IRoster, numTeams: number): [ITeam] => {
+export const createTeams = (rosterFormat: IRoster, numTeams: number): ITeam[] => {
     const teamNames = ["Gravy Boat",
         "team2",
         "team3",

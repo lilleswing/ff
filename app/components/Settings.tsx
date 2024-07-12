@@ -1,4 +1,4 @@
-import { Button, Radio, Select, Tooltip } from 'antd';
+import { Button, Select, Tooltip } from 'antd';
 import { saveAs } from 'file-saver';
 import { IScoring } from 'lib/models/Scoring';
 import * as React from 'react';

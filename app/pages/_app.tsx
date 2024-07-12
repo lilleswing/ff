@@ -12,7 +12,7 @@ import { ToastContainer } from 'react-toastify';
 if (typeof window !== 'undefined') {
   window.onload = () => {
     // if the last sync was within 12 hours, don't re-sync players
-    const { lastSync, lastSyncPlayers, players } = store.getState();
+    // const { lastSync, lastSyncPlayers, players } = store.getState();
     // if (players.length && lastSyncPlayers.length && lastSync > 0 && Date.now() - lastSync < 1000 * 60 * 60 * 12) {
     //   return;
     // }

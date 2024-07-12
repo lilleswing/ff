@@ -1,7 +1,7 @@
 import { DraftablePositions as positions, IPlayer } from '../../models/Player';
 import { IScoring } from '../../models/Scoring';
 import { IPick, IRoster, ITeam, NullablePlayer } from '../../models/Team';
-import {createTeam, createTeams, IStoreState} from '../store';
+import {createTeams, IStoreState} from '../store';
 import { setActiveTeam, setNumberOfTeams } from './teams';
 
 interface IPlayerForecast extends IPlayer {
