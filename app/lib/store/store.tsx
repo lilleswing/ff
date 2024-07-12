@@ -104,9 +104,9 @@ export interface IStoreState {
 
 export const createTeams = (rosterFormat: IRoster, numTeams: number): ITeam[] => {
     const teamNames = ["Gravy Boat",
-        "team2",
-        "team3",
-        "team4",
+        "Ana's Team",
+        "Anna's Team",
+        "Ivan Lee's Good Long Team Name",
         "team5",
         "team6",
         "team7",

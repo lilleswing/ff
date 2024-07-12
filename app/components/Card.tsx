@@ -2,13 +2,14 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { compose, Dispatch } from 'redux';
 import { IPlayer } from '../lib/models/Player';
-import { IPick } from '../lib/models/Team';
+import {IPick, ITeam} from '../lib/models/Team';
 import { removePlayer } from '../lib/store/actions/players';
 import { pickPlayer, setPick, undoPick } from '../lib/store/actions/teams';
 import { IStoreState } from '../lib/store/store';
 
 interface ICardProps {
   canDrag: boolean;
+  teams: ITeam[];
   connectDragSource?: any;
   connectDropTarget?: any;
   currentPick?: boolean;
@@ -40,6 +41,7 @@ class Card extends React.Component<ICardProps> {
       playerMeta,
       pos,
       trackedTeamPicking,
+      teams,
       undoPick: undoPickInStore,
     } = this.props;
 
@@ -57,13 +59,15 @@ class Card extends React.Component<ICardProps> {
       .filter((c) => c)
       .join(' ');
 
+    const shortTeamNames = teams.map((x) => x.name.slice(0,10))
+
     return (
       <div key={pick.pickNumber} className={cardClass} style={{ width: length, height: length }}>
         {playerCard ? (
           // @ts-ignore
           <h5>{pos}</h5>
         ) : (
-          <h5>{pick.team + 1}</h5>
+          <h5>{teams[pick.team].name.slice(0,10)}</h5>
         )}
         {pick.player && !playerCard && <button className="Undo-Player-Pick" onClick={() => undoPickInStore(pick)} />}
 
@@ -83,7 +87,7 @@ class Card extends React.Component<ICardProps> {
 }
 
 /** nothing */
-const mapStateToProps = ({ numberOfTeams }: IStoreState) => ({ numberOfTeams });
+const mapStateToProps = ({ numberOfTeams, teams }: IStoreState) => ({ numberOfTeams, teams });
 
 /** only add ability to update a pick with a player */
 const mapDispatchToProps = (dispatch: Dispatch) => ({
