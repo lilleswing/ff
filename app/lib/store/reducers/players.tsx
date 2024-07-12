@@ -169,17 +169,18 @@ export const updatePlayerVORs = (state: IStoreState): IStoreState => {
 
     if (pos === 'QB') {
       starters += rosterFormat['SUPERFLEX'];
-      starters += 3;
     }
     if (['RB', 'WR'].includes(pos)) {
-      starters += 1; // I have no great excuse for this
-      starters += rosterFormat['FLEX'];
+      starters += rosterFormat['FLEX'] / 2;
     }
     if (['K', 'DST'].includes(pos)) {
       starters = 0;
     }
-
-    return { [pos]: Math.round(starters * numberOfTeams + 1), ...acc };
+    let guessVal = Math.round(starters * numberOfTeams) + 1;
+    if (pos === 'QB') {
+      guessVal += 4;
+    }
+    return { [pos]: guessVal, ...acc };
   }, {});
 
   // #2 find replacement values at each position subtracting points at the N+1'th index at that position

@@ -104,19 +104,19 @@ export interface IStoreState {
 
 export const createTeams = (rosterFormat: IRoster, numTeams: number): ITeam[] => {
     const teamNames = ["Gravy Boat",
-        "Ana's Team",
+        "Ana’s Team",
+        "StoneColdSteveEthan",
+        "WSHFantasy Team",
+        "Hayneis Chunky",
+        "This isn't soccer",
+        "Wu-Tang Financial",
+        "ethan is a dictator",
+        "Monopoles",
+        "Aaron Burr",
+        "#GoCommies",
+        "Le'Veon's Bellend",
         "Anna's Team",
-        "Ivan Lee's Good Long Team Name",
-        "team5",
-        "team6",
-        "team7",
-        "team8",
-        "team9",
-        "team10",
-        "team11",
-        "team12",
-        "team13",
-        "team14",
+        "Buffalo Thrill Cody"
     ]
     const retval = []
     for (let i = 0; i < numTeams; i++) {
@@ -145,7 +145,7 @@ export const createTeam = (rosterFormat: IRoster, teamName: string): ITeam => ({
  * If the actual roster is changed, the VOR calculations need to as well
  */
 export const initialRoster: IRoster = {
-    BENCH: 7,
+    BENCH: 5,
     DST: 1,
     FLEX: 1,
     SUPERFLEX: 1,
