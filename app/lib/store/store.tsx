@@ -164,7 +164,7 @@ export const initialScore: IScoring = {
     passYds: 0.04,
     passTds: 4.0, // tslint:disable-line
     passInts: -2.0,
-    receptions: 0.0,
+    receptions: 0.5,
     receptionYds: 0.1,
     receptionTds: 6.0,
     rushYds: 0.1,
