@@ -7,6 +7,7 @@ interface IPickHistoryProps {
   cardLength: number;
   currentPick: number;
   headerMessage: string;
+  yourUpMessage: string;
   open: boolean;
   picks: IPick[];
   refProp: any;
@@ -17,13 +18,14 @@ interface IPickHistoryProps {
 
 export default class PickHistory extends React.Component<IPickHistoryProps> {
   public render() {
-    const { activeTeam, cardLength, headerMessage, open, picks, refProp, toggleOpen, trackedTeam } = this.props;
+    const { activeTeam, cardLength, headerMessage, yourUpMessage, open, picks, refProp, toggleOpen, trackedTeam } = this.props;
 
     return (
       <div className="PickHistory Section">
         <header className="PickHistory-Header" onClick={toggleOpen}>
           <h3>Picks</h3>
           <p>{headerMessage}</p>
+          <p>{yourUpMessage}</p>
           {open ? <i className="up Grayed" /> : <i className="down Grayed" />}
         </header>
 

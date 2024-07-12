@@ -4,6 +4,7 @@ import { IPick, ITeam } from '../lib/models/Team';
 import { setTrackedTeam, undoPick } from '../lib/store/actions/teams';
 import { IStoreState } from '../lib/store/store';
 import PickHistory from './PickHistory';
+import {picksUntilActiveTeam} from "../lib/store/reducers/teams";
 
 interface IPickHistoryContainerProps {
   activeTeam: number;
@@ -66,10 +67,12 @@ class PickHistoryContainer extends React.Component<IPickHistoryContainerProps, I
   };
 
   public render() {
-    const { currentPick, numberOfTeams } = this.props;
+    const { currentPick, numberOfTeams , trackedTeam} = this.props;
 
     // round tracker message
     const headerMessage = `Round ${Math.ceil((currentPick + 1) / numberOfTeams)} – Pick ${currentPick + 1}`;
+    const picksToGoMessage =  "You Are Up In: " + picksUntilActiveTeam(trackedTeam, currentPick, numberOfTeams)
+
 
     return (
       <PickHistory
@@ -77,6 +80,7 @@ class PickHistoryContainer extends React.Component<IPickHistoryContainerProps, I
         {...this.state}
         refProp={this.pickRowRef}
         headerMessage={headerMessage}
+        yourUpMessage={picksToGoMessage}
         toggleOpen={this.toggleOpen}
       />
     );
