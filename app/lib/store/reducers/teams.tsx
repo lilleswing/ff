@@ -96,7 +96,6 @@ export const picksUntilActiveTeam = (activeTeam: number, currentPick: number, nu
     } else {
         pickInNextRound = numberOfTeams - activeTeam;
     }
-    console.log(leftInRound + ":" + pickInNextRound)
     return leftInRound + pickInNextRound;
 
 }
