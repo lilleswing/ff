@@ -103,20 +103,21 @@ export interface IStoreState {
 }
 
 export const createTeams = (rosterFormat: IRoster, numTeams: number): ITeam[] => {
-    const teamNames = ["Gravy Boat",
-        "Ana’s Team",
-        "StoneColdSteveEthan",
-        "WSHFantasy Team",
-        "Hayneis Chunky",
-        "This isn't soccer",
-        "Wu-Tang Financial",
-        "ethan is a dictator",
-        "Monopoles",
-        "Aaron Burr",
-        "#GoCommies",
-        "Le'Veon's Bellend",
-        "Anna's Team",
-        "Buffalo Thrill Cody"
+    const teamNames = [
+        "ethan is a dictator", //1
+        "WSHFantasy Team", //2
+        "Aaron Burr", //3
+        "This isn't soccer", //4
+        "Monopoles", // 5
+        "Le'Veon's Bellend", //6
+        "Gravy Boat", //7
+        "StoneColdSteveEthan", //8
+        "Wu-Tang Financial", //9
+        "Buffalo Thrill Cody", //10
+        "Anna's Team", //11
+        "Ana’s Team", //1
+        "#GoCommies", //13
+        "Hayneis Chunky" //14
     ]
     const retval = []
     for (let i = 0; i < numTeams; i++) {
