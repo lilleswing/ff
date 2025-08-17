@@ -115,8 +115,8 @@ export const createTeams = (rosterFormat: IRoster, numTeams: number): ITeam[] =>
     'Aaron Burr', //3
     'Buffalo Thrill Cody', //10
     'Monopoles', // 5
-    'WSHFantasy Team', //2
     'Hayneis Chunky', //14
+    'WSHFantasy Team', //2
     'Ana’s Team', //1
   ];
   const retval = [];
